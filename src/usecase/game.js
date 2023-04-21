@@ -7,7 +7,7 @@ class GameUsecase {
 
   saveScore(user, score) {}
 
-  chechSession(token) {}
+  checkSession(token) {}
 
   leaderBoard() {}
 }
