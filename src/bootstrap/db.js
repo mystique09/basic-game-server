@@ -13,14 +13,16 @@ class Database {
     }
   }
 
-  connect() {
+  async connect() {
     console.log('[INFO] connecting to database');
     this.conn.connect();
+    console.log('[INFO] connected to database');
   }
 
-  close() {
+  async close() {
     console.log('[INFO] closing database connection');
     this.conn.end();
+    console.log('[INFO] database disconnected');
   }
 }
 
@@ -39,14 +41,16 @@ class Redis {
     }
   }
 
-  connect() {
+  async connect() {
     console.log('[INFO] connecting to redis');
     this.client.connect();
+    console.log('[INFO] connected to redis');
   }
 
-  disconnect() {
+  async disconnect() {
     console.log('[INFO] closing redis client');
     this.client.disconnect();
+    console.log('[INFO] redis disconnected');
   }
 }
 
