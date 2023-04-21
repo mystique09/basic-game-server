@@ -16,6 +16,7 @@ function main() {
   const redis = new db.Redis(config.redis_url);
 
   const app = new server.Server(express, config, database, redis);
+  app.setup();
   app.start();
 }
 
