@@ -1,0 +1,28 @@
+{
+  "name": "game-expressjs",
+  "version": "0.0.1",
+  "description": "A basic game server",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mystique09/game-expressjs-practical-exam.git"
+  },
+  "keywords": [
+    "game",
+    "server"
+  ],
+  "author": "Ben",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mystique09/game-expressjs-practical-exam/issues"
+  },
+  "homepage": "https://github.com/mystique09/game-expressjs-practical-exam#readme",
+  "devDependencies": {
+    "expressjs": "^1.0.1",
+    "mysql": "^2.18.1",
+    "redis": "^4.6.5"
+  }
+}
