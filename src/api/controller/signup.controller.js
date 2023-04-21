@@ -7,7 +7,7 @@ class SignupController {
     this.env = env;
   }
 
-  async newAccount(req, res) {
+  newAccount = (req, res) => {
     return res.send('new account');
   }
 }

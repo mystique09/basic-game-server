@@ -7,11 +7,11 @@ class GameController {
     this.env = env;
   }
 
-  async saveScore(req, res) {
+  saveScore = (req, res) => {
     return res.send('save score');
   }
 
-  async leaderBoard(req, res) {
+  leaderBoard = (req, res) => {
     return res.send('leader board');
   }
 }
