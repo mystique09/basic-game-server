@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mystique09/game-expressjs-practical-exam#readme",
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "expressjs": "^1.0.1",
     "mysql": "^2.18.1",
     "redis": "^4.6.5"
