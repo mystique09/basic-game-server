@@ -1,4 +1,4 @@
-const { User } = require('../domain/user');
+const { User, CreateUserDTO } = require('../domain/user');
 
 class UserRepository {
   constructor(db, redis) {
@@ -6,6 +6,11 @@ class UserRepository {
     this.redis = redis;
   }
 
+  /**
+   * Creates new user
+   * @param {CreateUserDTO} payload 
+   * @returns User
+   */
   create(payload) {
     const newUser = new User(payload.username, payload.password);
     this.db.conn.query('INSERT INTO users SET ?', newUser, function(err, results, fields) {
@@ -15,6 +20,10 @@ class UserRepository {
     return newUser;
   }
 
+  /**
+   * Query all users in database
+   * @returns User[]
+   */
   getAll() {
     const users = this.db.conn.query('SELECT id, username, rank, score FROM users', function(err, results, fields) {
       if (err) throw err;

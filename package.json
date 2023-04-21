@@ -4,7 +4,9 @@
   "description": "A basic game server",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "start:redis": "docker run --name express-redis -p 6379:6379 -d redis:6.0-alpine3.17",
+    "start:mysql": "docker run --name express -e MYSQL_ROOT_PASSWORD=secret -p 5432:5432 -d mysql:latest"
   },
   "repository": {
     "type": "git",
