@@ -1,4 +1,4 @@
-class UserRepostory {
+class UserRepository {
   constructor(dbConn, redisConn) {
     this.dbConn = dbConn;
     this.redisConn = redisConn;
@@ -13,4 +13,4 @@ class UserRepostory {
   getOneByUsername(username) {}
 }
 
-module.exports = { UserRepository };
+module.exports = UserRepository;

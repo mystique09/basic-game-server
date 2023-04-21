@@ -1,4 +1,4 @@
-class GameUsecase() {
+class GameUsecase {
   constructor(gameRepository) {
     this.gameRepo = gameRepository;
   }
@@ -13,4 +13,4 @@ class GameUsecase() {
 }
 
 
-module.exports = { GameUsecase };
+module.exports = GameUsecase;

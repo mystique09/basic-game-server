@@ -11,4 +11,4 @@ class GameRepository {
 	leaderBoard() {}
 }
 
-module.exports = { GameRepository };
+module.exports = GameRepository;

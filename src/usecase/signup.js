@@ -8,4 +8,4 @@ class SignupUsecase {
   checkUser(username) {}
 }
 
-module.exports = { SignupUsecase };
+module.exports = SignupUsecase;

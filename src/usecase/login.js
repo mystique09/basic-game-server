@@ -12,4 +12,4 @@ class LoginUsecase {
   saveSession(token) {}
 }
 
-module.exports = { LoginUsecase };
+module.exports = LoginUsecase;
