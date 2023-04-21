@@ -3,7 +3,10 @@ class LoginUsecase {
     this.userRepo = userRepository;
   }
 
-  checkUser(username) {}
+  async checkUser(username) {
+    const user = this.userRepo.getOneByUsername(username);
+    return user;
+  }
 
   comparePassword(password, hash) {}
 
