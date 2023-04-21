@@ -1,5 +1,4 @@
 const express = require('express');
-const dotenv = require('dotenv');
 // bootstraps
 const env = require('./bootstrap/env');
 const db = require('./bootstrap/db');

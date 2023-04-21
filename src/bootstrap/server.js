@@ -13,6 +13,7 @@ class Server {
     this.redisClient = redisClient;
     this.serverConfig = config;
     this.expressClient = express();
+    this.expressClient.use(express.json());
   }
 
   setup() {
@@ -21,6 +22,7 @@ class Server {
 
  async  start() {
     await this.dbConnection.connect();
+    await this.dbConnection.autoMigrate();
     await this.redisClient.connect();
 
     this.expressClient.listen(this.config.port, () => {

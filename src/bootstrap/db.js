@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const { createClient } = require('redis');
+const { databaseSchema } = require('../../migrations/schema');
 
 class Database {
   conn;
@@ -17,6 +18,12 @@ class Database {
     console.log('[INFO] connecting to database');
     this.conn.connect();
     console.log('[INFO] connected to database');
+  }
+
+  async autoMigrate() {
+    this.conn.query(databaseSchema, ['users'], function(err) {
+      console.log(`[ERROR] migrate error: ${err.message}`);
+    });
   }
 
   async close() {
