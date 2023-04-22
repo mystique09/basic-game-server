@@ -3,13 +3,26 @@ class GameUsecase {
     this.gameRepo = gameRepository;
   }
 
-  compareScore(score, oldScore) {}
+  async saveScore(token, score) {
+    const newCache = await this.gameRepo.saveScore(token, score);
+    return newCache;
+  }
 
-  saveScore(user, score) {}
+  async getSession(token) {
+    const session = await this.gameRepo.getSession(token);
+    return session;
+  }
 
-  checkSession(token) {}
+  async checkSession(token) {
+    const session = await this.gameRepo.getSession(token);
+    console.log(session);
+    return !!session;
+  }
 
-  leaderBoard() {}
+  async leaderBoard() {
+    const board = await this.gameRepo.leaderBoard();
+    return board;
+  }
 }
 
 
