@@ -1,18 +1,28 @@
+const crypto = require('crypto');
+
 class LoginUsecase {
   constructor(userRepository) {
     this.userRepo = userRepository;
   }
 
   async checkUser(username) {
-    const user = this.userRepo.getOneByUsername(username);
+    const user = await this.userRepo.getOneByUsername(username);
     return user;
   }
 
-  comparePassword(password, hash) {}
+  comparePassword(payload, password) {
+    return payload === password;
+  }
 
-  createToken() {}
+  createToken() {
+    const token = crypto.randomUUID().split('-')[0];
+    return token;
+  }
 
-  saveSession(token) {}
+  async saveSession(token, user) { 
+    const res = await this.userRepo.saveSession(token, user);
+    return res;
+  }
 }
 
 module.exports = LoginUsecase;
