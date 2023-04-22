@@ -1,4 +1,4 @@
-const { User, CreateUserDTO } = require('../domain/user');
+const { User } = require('../domain/user');
 
 class UserRepository {
   constructor(db, redis) {
@@ -8,16 +8,22 @@ class UserRepository {
 
   /**
    * Creates new user
-   * @param {CreateUserDTO} payload 
+   * @param {User} payload 
    * @returns User
    */
   create(payload) {
-    const newUser = new User(payload.username, payload.password);
-    this.db.conn.query('INSERT INTO users SET ?', newUser, function(err, results, fields) {
-      if (err) throw err;
-      console.log({results, fields});
+    return new Promise((res, rej) => {
+      this.db.conn.query('INSERT INTO users SET ?', payload, function(err, results, fields) {
+        if (err) return rej(err);
+        return res(results);
+      });
     });
-    return newUser;
+  }
+
+  async saveSession(token, user) {
+    const query = await this.redis.client.set(token, JSON.stringify(user), {EX: 60 * 5});
+    console.log(query)
+    return query;
   }
 
   /**
@@ -25,16 +31,13 @@ class UserRepository {
    * @returns User[]
    */
   getAll() {
-    const users = this.db.conn.query('SELECT id, username, rank, score FROM users', function(err, results, fields) {
-      if (err) throw err;
-      console.log({results, fields});
-      return results;
+    return new Promise((res, rej) => {
+      this.db.conn.query('SELECT id, username, rank, score FROM users', function(err, results, fields) {
+        if (err) return rej(err);
+        return res(results);
+      });
     });
-
-    return users;
   }
-
-  getOneById(id) {}
 
   getOneByUsername(username) {
     return new Promise((res, rej) => {
