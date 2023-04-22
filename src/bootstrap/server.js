@@ -20,7 +20,7 @@ class Server {
     setupRouter(this.expressClient, this.dbConnection, this.redisClient, this.config);
   }
 
- async  start() {
+ async start() {
     await this.dbConnection.connect();
     await this.dbConnection.autoMigrate();
     await this.redisClient.connect();
