@@ -16,8 +16,6 @@ class GameRepository {
 		console.log({user})
 		if(Number(user.score) < newScore) {
 			const query = await this.db.conn.query("UPDATE users SET score = ? WHERE username = ?", [newScore, user.username]);
-			console.log(query)
-			//await this.redis.client.del(token);
 			user.score = newScore;
 			const newCache = await this.redis.client.set(token, JSON.stringify(user), {
 				KEEPTTL: true
@@ -29,7 +27,7 @@ class GameRepository {
 	
 	leaderBoard() {
 		return new Promise((res, rej) => {
-			this.db.conn.query("SELECT username, score FROM ?? ORDER BY rank DESC LIMIT 3", ['users'], function(err, results, fields) {
+			this.db.conn.query("SELECT username, score FROM ?? ORDER BY rank, score DESC LIMIT 3", ['users'], function(err, results, fields) {
 				if(err) return rej(err);
 				return res(results);
 			});
