@@ -37,7 +37,7 @@ class LoginController {
       };
       const saveSession = await this.loginUsecase.saveSession(randomToken, session);
          
-      return res.status(200).json({code: 200, randomToken});
+      return res.status(200).json({code: 200, token: randomToken});
     } catch(e) {
       return res.status(500).json({code: 500, error: "login failed"});
     }
